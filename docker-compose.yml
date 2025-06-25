@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  node1:
+    build:
+      context: .
+    container_name: node1
+    ports:
+      - "8001:8000"
+    environment:
+      NODE_ID: "node1"
+      ALL_NODES: '{"node1": "http://node1:8000", "node2": "http://node2:8000", "node3": "http://node3:8000"}'
+
+  node2:
+    build:
+      context: .
+    container_name: node2
+    ports:
+      - "8002:8000"
+    environment:
+      NODE_ID: "node2"
+      ALL_NODES: '{"node1": "http://node1:8000", "node2": "http://node2:8000", "node3": "http://node3:8000"}'
+
+  node3:
+    build:
+      context: .
+    container_name: node3
+    ports:
+      - "8003:8000"
+    environment:
+      NODE_ID: "node3"
+      ALL_NODES: '{"node1": "http://node1:8000", "node2": "http://node2:8000", "node3": "http://node3:8000"}'
+
